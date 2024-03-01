@@ -24,7 +24,7 @@ public class Voo {
     public void getProximoAssentoLivre() {
         System.out.println("Assentos disponíveis: ");
         for (int i = 0; i < assentos.length; i++) {
-            if(!assentos[i]) {
+            if (!assentos[i]) {
                 switch (i) {
                     case 9:
                         System.out.println(i + 1);
@@ -53,10 +53,11 @@ public class Voo {
                 }
             }
         }
+        System.out.println();
     }
 
     public Boolean isAssentoLivre(int n) {
-        if(!assentos[n]) {
+        if (!assentos[n]) {
             System.out.println("O assento " + (n + 1) + " se encontra disponível.");
             return true;
         } else {
@@ -68,11 +69,11 @@ public class Voo {
 
     public Boolean ocuparAssento(int n) {
         int indiceCorreto = n - 1;
-        if(indiceCorreto < 0 || indiceCorreto > 69) {
+        if (indiceCorreto < 0 || indiceCorreto > 69) {
             System.out.println("O assento inserido não existe, insira um valor entre 1 e 70.");
             return false;
         } else {
-            if(isAssentoLivre(indiceCorreto)) {
+            if (isAssentoLivre(indiceCorreto)) {
                 assentos[indiceCorreto] = true;
                 System.out.println("Assento ocupado com sucesso!");
                 System.out.println("-------------------------------------------");
@@ -80,5 +81,36 @@ public class Voo {
             }
         }
         return false;
+    }
+
+    public int getTotalAssentosLivres() {
+        int assentosLivres = 0;
+        for (Boolean assento : assentos) {
+            if (!assento) {
+                assentosLivres++;
+            }
+        }
+        System.out.println("Atualmente, o voo possui " + assentosLivres + " assentos disponíveis");
+        return assentosLivres;
+    }
+
+    public double getTaxaOcupacao() {
+        double taxaOcupacao = 0;
+        double assentosOcupados = 70 - getTotalAssentosLivres();
+        taxaOcupacao = (assentosOcupados * 100) / 70;
+        System.out.printf("Atualmente, os assentos estão %.2f%% ocupados.%n", taxaOcupacao);
+        return taxaOcupacao;
+    }
+
+    public Date getDatahorario() {
+        return datahorario;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public Boolean[] getAssentos() {
+        return assentos;
     }
 }

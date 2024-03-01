@@ -42,7 +42,6 @@ public class Date {
                     return 366 - this.day - 305; // outubro
                 case 12:
                     return 366 - this.day - 335; // novembro
-
             }
         } else {
             switch (this.month) {

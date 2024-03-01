@@ -12,19 +12,7 @@ public class Date {
     }
 
     public String showDate() {
-        String dayFormated;
-        String monthFormated;
-        if (this.day < 10) {
-            dayFormated = "0" + this.day;
-        } else {
-            dayFormated = String.valueOf(this.day);
-        }
-        if (this.month < 10) {
-            monthFormated = "0" + this.month;
-        } else {
-            monthFormated = String.valueOf(this.month);
-        }
-        return dayFormated + "/" + monthFormated + "/" + this.year;
+        return (this.day < 10 ? "0" : "") + this.day + "/" + (this.month < 10 ? "0" : "") + this.month + "/" + this.year;
     }
 
     public int getDay() {

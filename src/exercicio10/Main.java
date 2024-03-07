@@ -9,13 +9,13 @@ public class Main {
         int horasAcrescimo = 0;
         Funcionario funcionario1 = new Funcionario("Heder", "Moreira David", 50,
                 40);
-        Funcionario funcionario2 = new Funcionario("João", "Silva",  40,
+        Funcionario funcionario2 = new Funcionario("João", "Silva", 40,
                 25.50);
-        Funcionario funcionario3 = new Funcionario("Maria", "Souza",  35,
+        Funcionario funcionario3 = new Funcionario("Maria", "Souza", 35,
                 20.00);
         Funcionario funcionario4 = new Funcionario("Carlos", "Ferreira", 38,
                 22.50);
-        Funcionario funcionario5 = new Funcionario("Ana", "Pereira",  42,
+        Funcionario funcionario5 = new Funcionario("Ana", "Pereira", 42,
                 18.75);
         do {
             System.out.println("---------------------------------------------------------------------");
@@ -32,6 +32,7 @@ public class Main {
                 funcionarioSelecionado = scanner.nextInt();
                 System.out.print("Digite as horas de trabalho para o acréscrimo: ");
                 horasAcrescimo = scanner.nextInt();
+                scanner.close();
                 switch (funcionarioSelecionado) {
                     case 1:
                         System.out.println(funcionario1.getPrimeiroNome() + " " + funcionario1.getSobrenome());
@@ -65,9 +66,6 @@ public class Main {
             } else {
                 System.out.println("Operação invalida, digite um número correto.");
             }
-
         } while (opcao != 3);
-
-
     }
 }

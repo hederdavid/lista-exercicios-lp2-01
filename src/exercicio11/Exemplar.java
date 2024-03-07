@@ -2,8 +2,8 @@ package exercicio11;
 
 public class Exemplar {
     private int numeroTombo;
-    private String tituloObra;
-    private String[] autoria;
+    private final String tituloObra;
+    private final String[] autoria;
     private Boolean habilitadoExemplarEmprestimo;
     private int quantidadeEmprestimosRegistrado = 0;
 
@@ -20,7 +20,6 @@ public class Exemplar {
             quantidadeEmprestimosRegistrado++;
         }
     }
-
     public void habilitarEmprestimo() {
         habilitadoExemplarEmprestimo = true;
     }
@@ -29,9 +28,24 @@ public class Exemplar {
         habilitadoExemplarEmprestimo = false;
     }
 
+    public int getNumeroTombo() {
+        return numeroTombo;
+    }
 
+    public String getTituloObra() {
+        return tituloObra;
+    }
 
+    public String[] getAutoria() {
+        return autoria;
+    }
 
+    public Boolean getHabilitadoExemplarEmprestimo() {
+        return habilitadoExemplarEmprestimo;
+    }
 
+    public int getQuantidadeEmprestimosRegistrado() {
+        return quantidadeEmprestimosRegistrado;
+    }
 
 }

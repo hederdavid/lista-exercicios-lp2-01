@@ -1,5 +1,7 @@
 package exercicio12;
 
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -14,7 +16,7 @@ public class Main {
         Exemplar exemplar3 = new Exemplar("Jornada ao Desconhecido", new String[]{"Fernanda Lima", "Pedro Almeida"},
                 false, 5);
         Exemplar exemplar4 = new Exemplar("Segredos do Passado", new String[]{"Paulo Rocha", "Juliana Costa"},
-                true, 0);
+                true, 50);
         Exemplar exemplar5 = new Exemplar("O Enigma das Estrelas", new String[]{"Camila Oliveira", "Rafael Santos"},
                 false, 12);
         Exemplar exemplar6 = new Exemplar("A Descoberta do Novo Mundo", new String[]{"Mariana Silva", "Daniel Costa"},
@@ -89,6 +91,7 @@ public class Main {
                         }
                     }
                 }
+
                 if (numeroRef == 0) {
                     System.out.println("║ No momento, todos os livros estão indisponíveis        ║");
                 }
@@ -126,6 +129,7 @@ public class Main {
                         }
                     }
                 }
+
                 if (numeroRef == 0) {
                     System.out.println("║ No momento, todos os livros estão indisponíveis        ║");
                 }
@@ -154,13 +158,13 @@ public class Main {
 
                 for (Exemplar exemplar : exemplares) {
                     totalEmprestimos += exemplar.getQuantidadeEmprestimosRegistrado();
-                        System.out.println("╠════════════════════════════════════════════════════════╣");
-                        System.out.println("║ Título: " + exemplar.getTituloObra());
-                        System.out.println("║ Autores: ");
-                        System.out.println("║ Empréstimos: " + exemplar.getQuantidadeEmprestimosRegistrado());
-                        for (String autor : exemplar.getAutoria()) {
-                            System.out.println("║   - " + autor);
-                        }
+                    System.out.println("╠════════════════════════════════════════════════════════╣");
+                    System.out.println("║ Título: " + exemplar.getTituloObra());
+                    System.out.println("║ Autores: ");
+                    for (String autor : exemplar.getAutoria()) {
+                        System.out.println("║   - " + autor);
+                    }
+                    System.out.println("║ Empréstimos: " + exemplar.getQuantidadeEmprestimosRegistrado());
                 }
                 System.out.println("╠════════════════════════════════════════════════════════╣");
                 System.out.println("║ Total de empréstimos: " + totalEmprestimos);
@@ -168,22 +172,39 @@ public class Main {
                 System.out.println();
 
             } else if (opcaoEscolhida == 5) {
-                Exemplar[] exemplarMaiorEmprestimo = new Exemplar[5];
+                Exemplar[] exemplarMaiorEmprestimo = new Exemplar[6];
+                int indice = 0;
                 int quantidadeMaiorEmprestimo = 0;
-                System.out.println("╔════════════════════════════════════════════════════════╗");
-                System.out.println("║ Livro(s) com maior quantidade de empréstimos           ║");
-                for (Exemplar exemplar : exemplares) {
+                System.out.println("╔════════════════════════════════════════════════════════════╗");
+                System.out.println("║      Exemplar(es) com maior quantidade de empréstimos      ║");
+                for (int i = 0; i < exemplares.length; i++) {
+                    Exemplar exemplar = exemplares[i];
                     if (exemplar.getQuantidadeEmprestimosRegistrado() > quantidadeMaiorEmprestimo) {
                         quantidadeMaiorEmprestimo = exemplar.getQuantidadeEmprestimosRegistrado();
-                        exemplarMaiorEmprestimo[0] = exemplar;
+                        indice = i;
                     }
                 }
-                for (int i = 0; i < exemplares.length; i++) {
-                    if (quantidadeMaiorEmprestimo == exemplares[i].getQuantidadeEmprestimosRegistrado()) {
-                        exemplarMaiorEmprestimo[i] = exemplares[i];
+                exemplarMaiorEmprestimo[0] = exemplares[indice];
+                indice = 0;
+                for (Exemplar exemplar : exemplares) {
+                    if (exemplar.getQuantidadeEmprestimosRegistrado() == quantidadeMaiorEmprestimo) {
+                        indice++;
+                        if (!Objects.equals(exemplar.getTituloObra(), exemplarMaiorEmprestimo[0].getTituloObra())) {
+                            exemplarMaiorEmprestimo[indice] = exemplar;
+                        }
                     }
                 }
-
+                for (Exemplar exemplar : exemplarMaiorEmprestimo) {
+                    if (exemplar != null) {
+                        System.out.println("║ Título: " + exemplar.getTituloObra());
+                        System.out.println("║ Autores: ");
+                        for (String autor : exemplar.getAutoria()) {
+                            System.out.println("║   - " + autor);
+                        }
+                        System.out.println("║ Empréstimos: " + exemplar.getQuantidadeEmprestimosRegistrado());
+                        System.out.println("╚════════════════════════════════════════════════════════════╝");
+                    }
+                }
             }
 
         } while (opcaoEscolhida != 6);

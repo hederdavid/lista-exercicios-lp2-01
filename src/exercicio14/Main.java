@@ -47,18 +47,22 @@ public class Main {
                     formasGeometricas[i] = retangulo;
                     scanner.nextLine();
                 }
+                default -> {
+                    System.out.println("Insira um valor valido!");
+                    i = -1;
+                }
             }
         }
 
         for (FormaGeometrica forma : formasGeometricas) {
             System.out.println(forma.toString());
             if (forma.toString().equals("Circulo")) {
-                System.out.println("Area: ");
+                System.out.print("Area: ");
                 System.out.println(forma.calcularArea());
-                System.out.println("Perímetro: ");
+                System.out.print("Perímetro: ");
                 System.out.println(forma.calcularPerimetro());
             } else {
-                System.out.println("Perímetro: ");
+                System.out.print("Perímetro: ");
                 System.out.println(forma.calcularPerimetro());
             }
 

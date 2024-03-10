@@ -42,18 +42,12 @@ public class Main {
             }
         } while (!isValorCorreto);
 
-        isValorCorreto = false;
-
-        do {
-            try {
-                r = (double) x / y;
-                System.out.println("\nResultado da Divisão: " + r);
-                isValorCorreto = true;
-            } catch (ArithmeticException e) {
-                System.out.println(e.getMessage());
-            }
-        } while(!isValorCorreto);
-
+        try {
+            r = (double) x / y;
+            System.out.println("\nResultado da Divisão: " + r);
+        } catch (ArithmeticException e) {
+            System.out.println("Algo deu errado na divisão...");
+        }
 
         scanner.close();
 

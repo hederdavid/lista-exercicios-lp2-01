@@ -24,13 +24,11 @@ public class Main {
             }
         } while (!isValorCorreto);
 
-
-
         for (int i = 0; i < tamanhoArray; i++) {
             isValorCorreto = false;
             do {
                 try {
-                    System.out.print("Insira o " + (i+1) + "º número: ");
+                    System.out.print("Insira o " + (i + 1) + "º número: ");
                     array[i] = scanner.nextInt();
                     isValorCorreto = true;
                 } catch (InputMismatchException e) {
@@ -40,7 +38,6 @@ public class Main {
             } while (!isValorCorreto);
 
         }
-
 
         for (int numero : array) {
             soma += numero;

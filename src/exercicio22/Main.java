@@ -1,4 +1,7 @@
-package exercicio21;
+package exercicio22;
+
+import exercicio21.DataIncorretaException;
+import exercicio21.Date;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -58,5 +61,6 @@ public class Main {
 
         System.out.println(date.showDate());
         System.out.println(date.getDiasTerminoAno());
+        scanner.close();
     }
 }

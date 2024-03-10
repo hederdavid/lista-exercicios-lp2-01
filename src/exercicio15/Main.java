@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int x = 0, y = 0, r = 0;
-        boolean isSentinela = false;
+        int x = 0, y = 0;
+        double r = 0;
+        boolean isValorCorreto = false;
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Operação de Divisão\n");
@@ -16,34 +17,43 @@ public class Main {
             try {
                 System.out.print("Informe Dividendo...: ");
                 x = scanner.nextInt();
-                isSentinela = true;
+                isValorCorreto = true;
             } catch (InputMismatchException e) {
                 System.out.println("Insira um número inteiro.");
                 scanner.next();
             }
-        } while (!isSentinela);
+        } while (!isValorCorreto);
 
-        isSentinela = false;
+        isValorCorreto = false;
 
         do {
             try {
                 System.out.print("Informe Divisor.....: ");
                 y = scanner.nextInt();
-                isSentinela = true;
+                if (y == 0) {
+                    throw new ArithmeticException("O divisor não pode ser 0!");
+                }
+                isValorCorreto = true;
             } catch (InputMismatchException e) {
                 System.out.println("Insira um número inteiro.");
                 scanner.next();
+            } catch (ArithmeticException e) {
+                System.out.println(e.getMessage());
             }
-        } while (!isSentinela);
+        } while (!isValorCorreto);
 
-        try {
-            r = x / y; // divisão entre dois números inteiros informados;
-            System.out.println("\nResultado da Divisão: " + r);
-        } catch (ArithmeticException e) {
-            System.out.println("Divisor não pode ser igual a 0!");
-        }
+        isValorCorreto = false;
 
-        // exibição de resultado da divisão
+        do {
+            try {
+                r = (double) x / y;
+                System.out.println("\nResultado da Divisão: " + r);
+                isValorCorreto = true;
+            } catch (ArithmeticException e) {
+                System.out.println(e.getMessage());
+            }
+        } while(!isValorCorreto);
+
 
         scanner.close();
 

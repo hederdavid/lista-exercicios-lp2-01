@@ -1,4 +1,4 @@
-package exercicio23;
+package exercicio24;
 
 import java.util.Arrays;
 import java.util.Date;

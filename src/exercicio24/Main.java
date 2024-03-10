@@ -1,5 +1,7 @@
-package exercicio23;
+package exercicio24;
 
+
+import exercicio23.Voo;
 
 import java.util.Scanner;
 
